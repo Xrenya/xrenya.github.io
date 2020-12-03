@@ -20,7 +20,12 @@ Work experience
   * Russia
 * 2020: Machine Learning Engineer
   * Tokyo, Japan
-  
+
+Competitions
+======
+* 2020: World AI & Data Challange, Russia
+  * 12th place
+
 Skills
 ======  
 * Languages
