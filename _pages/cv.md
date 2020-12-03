@@ -31,7 +31,7 @@ Skills
   * PyTorch
   * TensorFlow
   * Keras
-  * XBGBoost, CatBoost, etc.
+  * XGBoost, CatBoost, etc.
 * Big Data
   * MySQL
   * ClickHouse
