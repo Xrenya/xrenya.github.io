@@ -18,7 +18,7 @@ Work experience
 ======
 * 2015: Engineer
   * Russia
-* Fall 2020: Machine Learning Engineer
+* 2020: Machine Learning Engineer
   * Tokyo, Japan
   
 Skills
