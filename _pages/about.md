@@ -8,3 +8,4 @@ redirect_from:
   - /about.html
 ---
 Hello, I am Rinat, a Machine Learning Engineer, and I work in Tokyo. I am interested in CV, NLP, data analytics and machine learning competitions.
+![ods](ods_stickers.jpg)
