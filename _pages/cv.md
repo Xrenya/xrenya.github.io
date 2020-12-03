@@ -22,13 +22,16 @@ Work experience
   * Tokyo, Japan
   
 Skills
-======
-* Python, C++
+======  
+* Languages
+  * Python
+  * C++
+  * Russian, English and Japanese(N4)
 * ML
   * PyTorch
   * TensorFlow
   * Keras
-  * XBGBoost, CatBoost
+  * XBGBoost, CatBoost, etc.
 * Big Data
   * MySQL
   * ClickHouse
