@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "AI/ML"
+title                    : "DL/ML"
 title_separator          : "-"
 name                     : &name "Rinat"
 description              : &description "MLE"
