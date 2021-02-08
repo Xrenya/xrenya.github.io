@@ -1,7 +1,6 @@
 ---
-title: "In progress"
-excerpt: "Short description of portfolio<br/><img src='/images/download.jpeg'>"
+title: "The online dashboard to monitor the pollution level in Tyumen Oblast, Russia"
+excerpt: "Short description of portfolio<br/><img src='/images/gui_app.png'>"
 collection: portfolio
 ---
-
-In progress ..
+The interactive dashboard was done as a part of an online hackathon.
