@@ -9,11 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* M.S. in Engineering, The University of Tokyo, 2020
-* B.S. in Engineering, NSUACE, 2015
-
 Work experience
 ======
 * 2021 - p.t.: Machine Learning Engineer (NLP)
@@ -29,6 +24,11 @@ Competitions
   * 12th place (the first tour)
 * 2021: World AI & Data Challange, Russia
   * 4th place (the final tour)
+
+Education
+======
+* M.S. in Engineering, The University of Tokyo, 2020
+* B.S. in Engineering, NSUACE, 2015
 
 Skills
 ======  
