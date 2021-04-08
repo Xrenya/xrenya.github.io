@@ -11,20 +11,24 @@ redirect_from:
 
 Education
 ======
-* B.S. in Engineering, NSUACE, 2015
 * M.S. in Engineering, The University of Tokyo, 2020
+* B.S. in Engineering, NSUACE, 2015
 
 Work experience
 ======
-* 2015: Engineer
-  * Russia
-* 2020: Machine Learning Engineer
+* 2021 - p.t.: Machine Learning Engineer (NLP)
+  * United Kingdom, London
+* 2020 - p.t.: Machine Learning Engineer (CV)
   * Tokyo, Japan
+* 2015 - 2017: Engineer
+  * Russia
 
 Competitions
 ======
 * 2020: World AI & Data Challange, Russia
-  * 12th place
+  * 12th place (the first tour)
+* 2021: World AI & Data Challange, Russia
+  * 4th place (the final tour)
 
 Skills
 ======  
