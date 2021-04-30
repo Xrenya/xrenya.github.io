@@ -27,6 +27,7 @@ Competitions
 
 Education
 ======
+* Professional Development: Advanced Algorithms, Moscow Institute of Physics and Technology (State University) (MIPT), 2021
 * M.S. in Engineering, The University of Tokyo, 2020
 * B.S. in Engineering, NSUACE, 2015
 
