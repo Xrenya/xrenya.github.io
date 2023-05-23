@@ -13,7 +13,7 @@ Work experience
 ======
 * 2021 - p.t.: AI Research Engineer (CV)
   * Tokyo, Japan
-* 2021 - p.t.: Machine Learning Engineer (CV, NLP)
+* 2021 - Dec 2022: Machine Learning Engineer (CV, NLP)
   * United Kingdom, London
 * 2020 - 2021.: Machine Learning Engineer (CV)
   * Tokyo, Japan
