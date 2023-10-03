@@ -22,6 +22,8 @@ Work experience
 
 Competitions
 ======
+* 2022: Interpretable Text Classification in Legal Contract Documents "X-MASS HACK"
+  * 7st place 
 * 2021: Applied AI Challenge "GeoTech"
   * 1st place 
 * 2021: World AI & Data Challange, Russia
