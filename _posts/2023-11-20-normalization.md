@@ -1,7 +1,7 @@
 ---
 title: 'ML: Normalization'
 date: 2023-11-20
-permalink: /posts/2023/11/blog-post-2/
+permalink: /posts/2023/11/normalization/
 tags:
   - BatchNorm
   - InPlace-ABN
