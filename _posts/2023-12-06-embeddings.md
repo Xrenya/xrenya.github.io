@@ -1,65 +1,88 @@
 ---
 title: 'Embeddings'
 date: 2023-12-06
+last_modified_at: 2026-05-24
 permalink: /posts/2023/11/embeddings-tokenizers/
 tags:
   - One-hot Vectors
-  - w2v
-  - skipgram
-  - cbow
-  - fasttext
-  - glove
+  - Word2Vec
+  - Skip-gram
+  - CBOW
+  - FastText
+  - GloVe
+  - Transformers
+  - RAG
 ---
 
-The machine learning models cannot interpretate data as human do. For example,
-we can easily understand the text "I saw a cat", but our models can not - they need vectors of features.
-Such vectors, or word embeddings, are representations of words which can be fed into your model.
+Machine learning models do not understand raw text directly. They need text to be converted into numeric vectors. An embedding is a learned vector representation for a token, word, sentence, document, image, or other object.
 
-In practice, you have a vocabulary of allowed words; you choose this vocabulary in advance.
-For each vocabulary word, a look-up table contains its embedding. This embedding can be found
-using the word index in the vocabulary (i.e., you to look up the embedding in the table using word index).
+_Updated: May 24, 2026._
 
-One-hot Vectors
-======
-The easiest you can do is to represent words as one-hot vectors: for the i-th word in the vocabulary,
-the vector has 1 on the i-th dimension and 0 on the rest. In Machine Learning, this is the most simple way to represent categorical features.
+Good embeddings preserve useful similarity: nearby vectors should usually represent items that behave similarly for the task.
 
-You probably can guess why one-hot vectors are not the best way to represent words.
-One of the problems is that for large vocabularies, these vectors will be very long:
-vector dimensionality is equal to the vocabulary size, quite sparse, problems with handling issues with out-of-vocabulary.
-What is really important, is that these vectors know nothing about the words they represent. It is impossible to measure 
-how close similar words. These issues are undesirable in practice. Words which frequently appear in similar contexts have similar meaning.
+## One-Hot Vectors
 
-Skip-Gram
-======
-Skip-Gram is the model we considered so far: it predicts context words given the central word. Skip-Gram with negative sampling is the most popular approach.
-The skip-gram can use different context window size: 1, 2, 3 etc. But wider context window size does not guarantee a better quality. Negative
-sampling improves embeddings and decrease training time.
+A one-hot vector has one active dimension and zeros everywhere else. If a word is the i-th item in a vocabulary, its vector has `1` in position `i`.
 
-CBOW
-======
-CBOW (Continuous Bag-of-Words) predicts the central word from the sum of context vectors.
-This simple sum of word vectors is called "bag of words", which gives the name for the model.
-Context words embeddings are sum together and used to predict the central word (target). 
+One-hot vectors are simple, but they have major limitations:
 
-GloVe: Global Vectors for Word Representation
-======
-The GloVe model is a combination of count-based methods and prediction methods (e.g., Word2Vec).
-Model name, GloVe, stands for "Global Vectors", which reflects its idea: the method uses global information from corpus to learn vectors.
+- The vector size grows with the vocabulary.
+- Most values are zero.
+- Similar words are not close to each other.
+- Out-of-vocabulary words are hard to handle.
 
-As we saw earlier, the simplest count-based method uses co-occurrence counts to measure the
-association between word w and context c: N(w, c). GloVe also uses these counts to construct the loss function:
-- rare events are penalized,
-- very frequent events are not over-weighted.
+They are still useful for small categorical variables, but they are rarely the final representation for text.
 
+## Static Word Embeddings
 
-FastText
-======
-FastText is quite different from the above 2 embeddings. While Word2Vec and GLOVE treats each word
-as the smallest unit to train on, FastText uses n-gram characters as the smallest unit.
-For example, the word vector ,”apple”, could be broken down into separate word vectors units as
-“ap”,”app”,”ple”. The biggest benefit of using FastText is that it generate better word embeddings
-for rare words, or even words not seen during training because the n-gram character vectors are
-shared with other words. This is something that Word2Vec and GLOVE cannot achieve.
+Static embeddings assign one vector per word or subword, independent of context. Classic examples are Word2Vec, GloVe, and FastText.
 
-------
+Skip-gram predicts surrounding words from the center word. CBOW predicts the center word from surrounding context words. Negative sampling makes Word2Vec training much faster by contrasting observed pairs against sampled negative examples.
+
+GloVe learns from global co-occurrence statistics. It combines the intuition of count-based methods with a predictive objective.
+
+FastText represents a word using character n-grams. This helps rare words and misspellings because unseen words can still share subword pieces with known words.
+
+## Tokenization
+
+Modern NLP systems usually tokenize text into subwords rather than whole words. This keeps the vocabulary manageable and reduces out-of-vocabulary problems.
+
+Common tokenization families:
+
+- BPE: repeatedly merges frequent character or byte pairs.
+- WordPiece: similar in spirit to BPE, often associated with BERT-style models.
+- Unigram language-model tokenization: starts with many candidates and prunes them.
+- SentencePiece: trains directly from raw text and treats tokenization as a language-independent preprocessing step.
+
+Tokenization is not a neutral detail. It affects sequence length, multilingual quality, spelling robustness, cost, and how well the model handles domain-specific terms.
+
+## Contextual Embeddings
+
+The biggest change from classic embeddings is context. In a Transformer, the vector for a token depends on the full surrounding sequence. The word "bank" receives a different representation in "river bank" and "bank account".
+
+These contextual embeddings are the backbone of modern language models, dense retrievers, rerankers, and many multimodal systems.
+
+## Sentence And Document Embeddings
+
+For search, clustering, recommendations, deduplication, and retrieval-augmented generation, we often embed larger chunks of text rather than individual tokens.
+
+A practical retrieval pipeline usually includes:
+
+- Chunking documents into coherent passages.
+- Embedding each chunk.
+- Searching with approximate nearest neighbors.
+- Optionally combining dense retrieval with keyword search.
+- Reranking the top candidates before sending them to a generator or downstream model.
+
+## Current Practice
+
+As of 2026, classic Word2Vec, GloVe, and FastText are still useful baselines and teaching tools. For production NLP, contextual embeddings from Transformer models are the default. For LLM applications, embeddings are often part of a larger retrieval pipeline, so evaluation should measure the complete system: retrieval recall, answer quality, latency, and failure cases.
+
+Further reading:
+
+- [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
+- [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/)
+- [Enriching Word Vectors with Subword Information](https://arxiv.org/abs/1607.04606)
+- [SentencePiece: A simple and language independent subword tokenizer](https://arxiv.org/abs/1808.06226)
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)
